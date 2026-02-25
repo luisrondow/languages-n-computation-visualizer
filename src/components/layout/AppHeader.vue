@@ -15,7 +15,7 @@ function toggleLocale() {
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-surface-card border-b border-border-default">
+  <header class="flex items-center justify-between px-6 py-4 bg-surface-card border-b border-border-default">
     <div>
       <h1 class="text-xl font-bold text-accent-cyan font-mono tracking-wide">
         {{ t('app.title') }}
@@ -29,8 +29,7 @@ function toggleLocale() {
         href="https://github.com/luisrondow/languages-n-computation-visualizer"
         target="_blank"
         rel="noopener"
-        class="px-3 py-1.5 text-sm font-mono rounded-lg bg-surface-elevated border border-border-default
-               hover:border-accent-cyan hover:text-accent-cyan transition-colors"
+        class="text-sm font-mono hover:text-white transition-colors underline underline-offset-2"
       >
         GitHub
       </a>

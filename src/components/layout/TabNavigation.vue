@@ -16,7 +16,7 @@ const tabs: { key: AutomatonType; labelKey: string }[] = [
 </script>
 
 <template>
-  <nav class="flex gap-1 px-6 py-2 bg-surface-card border-b border-border-default overflow-x-auto">
+  <nav class="sticky top-0 z-50 flex gap-1 px-6 py-2 bg-surface-card border-b border-border-default overflow-x-auto">
     <button
       v-for="tab in tabs"
       :key="tab.key"
