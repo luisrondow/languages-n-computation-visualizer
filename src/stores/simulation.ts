@@ -68,7 +68,7 @@ export const useSimulationStore = defineStore('simulation', () => {
   function getCurrentSnapshot(type: AutomatonType): SimulationSnapshot | null {
     const sim = simulations[type]
     if (sim.currentStepIndex < 0 || sim.currentStepIndex >= sim.history.length) return null
-    return sim.history[sim.currentStepIndex]
+    return sim.history[sim.currentStepIndex] ?? null
   }
 
   return {

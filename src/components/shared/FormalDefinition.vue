@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import type { AutomatonType } from '../../types/automata'
 import type {
@@ -163,6 +163,21 @@ const rejectLabels = computed(() => {
   return d.rejectStates
     .map(id => d.states.find(s => s.id === id)?.label)
     .filter(Boolean) as string[]
+})
+
+const stackAlphabet = computed(() => {
+  if (def.value.type !== 'pda') return []
+  return def.value.stackAlphabet
+})
+
+const initialStackSymbol = computed(() => {
+  if (def.value.type !== 'pda') return ''
+  return def.value.initialStackSymbol
+})
+
+const tapeAlphabet = computed(() => {
+  if (def.value.type !== 'turing') return []
+  return def.value.tapeAlphabet
 })
 
 // Tooltip state
@@ -350,9 +365,9 @@ function onSymOut(e: MouseEvent) {
           <div class="text-gray-300 leading-relaxed space-y-0.5">
             <div><span class="text-accent-blue sym-tip" :data-tooltip="tt('Q')">Q</span><span class="text-gray-400"> = </span>{<span v-for="(s, i) in stateLabels" :key="s">{{ i > 0 ? ', ' : '' }}{{ s }}</span>}</div>
             <div><span class="text-yellow-400 sym-tip" :data-tooltip="tt('sigma')">&Sigma;</span><span class="text-gray-400"> = </span>{<span v-for="(a, i) in alphabet" :key="a">{{ i > 0 ? ', ' : '' }}{{ a }}</span>}</div>
-            <div><span class="text-accent-purple sym-tip" :data-tooltip="tt('gamma')">&Gamma;</span><span class="text-gray-400"> = </span>{<span v-for="(s, i) in (def as any).stackAlphabet" :key="s">{{ i > 0 ? ', ' : '' }}{{ s }}</span>}</div>
+            <div><span class="text-accent-purple sym-tip" :data-tooltip="tt('gamma')">&Gamma;</span><span class="text-gray-400"> = </span>{<span v-for="(s, i) in stackAlphabet" :key="s">{{ i > 0 ? ', ' : '' }}{{ s }}</span>}</div>
             <div><span class="text-accent-green sym-tip" :data-tooltip="tt('q0')">q&#x2080;</span><span class="text-gray-400"> = </span>{{ startLabel || '\u2014' }}</div>
-            <div><span class="text-accent-purple sym-tip" :data-tooltip="tt('Z0')">Z&#x2080;</span><span class="text-gray-400"> = </span>{{ (def as any).initialStackSymbol || '\u2014' }}</div>
+            <div><span class="text-accent-purple sym-tip" :data-tooltip="tt('Z0')">Z&#x2080;</span><span class="text-gray-400"> = </span>{{ initialStackSymbol || '\u2014' }}</div>
             <div><span class="text-accent-green sym-tip" :data-tooltip="tt('F')">F</span><span class="text-gray-400"> = </span>{<span v-for="(a, i) in acceptLabels" :key="a">{{ i > 0 ? ', ' : '' }}{{ a }}</span>}</div>
           </div>
           <div>
@@ -383,7 +398,7 @@ function onSymOut(e: MouseEvent) {
           <div class="text-gray-300 leading-relaxed space-y-0.5">
             <div><span class="text-accent-blue sym-tip" :data-tooltip="tt('Q')">Q</span><span class="text-gray-400"> = </span>{<span v-for="(s, i) in stateLabels" :key="s">{{ i > 0 ? ', ' : '' }}{{ s }}</span>}</div>
             <div><span class="text-yellow-400 sym-tip" :data-tooltip="tt('sigma')">&Sigma;</span><span class="text-gray-400"> = </span>{<span v-for="(a, i) in alphabet" :key="a">{{ i > 0 ? ', ' : '' }}{{ a }}</span>}</div>
-            <div><span class="text-accent-purple sym-tip" :data-tooltip="tt('gammaT')">&Gamma;</span><span class="text-gray-400"> = </span>{<span v-for="(s, i) in (def as any).tapeAlphabet" :key="s">{{ i > 0 ? ', ' : '' }}{{ s }}</span>}</div>
+            <div><span class="text-accent-purple sym-tip" :data-tooltip="tt('gammaT')">&Gamma;</span><span class="text-gray-400"> = </span>{<span v-for="(s, i) in tapeAlphabet" :key="s">{{ i > 0 ? ', ' : '' }}{{ s }}</span>}</div>
             <div><span class="text-accent-green sym-tip" :data-tooltip="tt('q0')">q&#x2080;</span><span class="text-gray-400"> = </span>{{ startLabel || '\u2014' }}</div>
             <div><span class="text-accent-green sym-tip" :data-tooltip="tt('qAccept')">q<sub>accept</sub></span><span class="text-gray-400"> = </span>{<span v-for="(a, i) in acceptLabels" :key="a">{{ i > 0 ? ', ' : '' }}{{ a }}</span>}</div>
             <div><span class="text-accent-red sym-tip" :data-tooltip="tt('qReject')">q<sub>reject</sub></span><span class="text-gray-400"> = </span>{<span v-for="(r, i) in rejectLabels" :key="r">{{ i > 0 ? ', ' : '' }}{{ r }}</span>}</div>

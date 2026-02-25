@@ -1,4 +1,4 @@
-import type { AutomatonDefinition, AutomatonType } from '../types/automata'
+import type { AutomatonDefinition } from '../types/automata'
 import type { SimulationSnapshot } from '../types/simulation'
 import { SimulationEngine } from './base'
 import { DfaEngine } from './dfa'

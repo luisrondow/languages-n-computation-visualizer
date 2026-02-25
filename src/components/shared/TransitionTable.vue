@@ -31,11 +31,6 @@ const newMove = ref<'L' | 'R' | 'S'>('R')
 // eNFA epsilon flag
 const newIsEpsilon = ref(false)
 
-const symbolOptions = computed(() => {
-  if (props.type === 'enfa') return [...alphabet.value, null]
-  return alphabet.value
-})
-
 function addTransition() {
   if (!newFrom.value) return
 
@@ -119,10 +114,6 @@ function toggleMultiTarget(stateId: string) {
   }
 }
 
-function formatTransition(tr: Record<string, unknown>, index: number): string {
-  // Used as a key
-  return `${index}`
-}
 </script>
 
 <template>

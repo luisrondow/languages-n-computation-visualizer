@@ -3,8 +3,11 @@ import type { TmSnapshot, LogEntry } from '../types/simulation'
 import { SimulationEngine } from './base'
 
 export class TuringEngine extends SimulationEngine<TmSnapshot> {
-  constructor(private def: TmDefinition) {
+  private readonly def: TmDefinition
+
+  constructor(def: TmDefinition) {
     super()
+    this.def = def
   }
 
   private getStateLabel(id: string): string {

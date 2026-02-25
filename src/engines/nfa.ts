@@ -3,8 +3,11 @@ import type { NfaSnapshot, LogEntry } from '../types/simulation'
 import { SimulationEngine } from './base'
 
 export class NfaEngine extends SimulationEngine<NfaSnapshot> {
-  constructor(private def: NfaDefinition) {
+  private readonly def: NfaDefinition
+
+  constructor(def: NfaDefinition) {
     super()
+    this.def = def
   }
 
   private getStateLabel(id: string): string {

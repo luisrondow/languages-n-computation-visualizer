@@ -3,8 +3,11 @@ import type { DfaSnapshot, LogEntry } from '../types/simulation'
 import { SimulationEngine } from './base'
 
 export class DfaEngine extends SimulationEngine<DfaSnapshot> {
-  constructor(private def: DfaDefinition) {
+  private readonly def: DfaDefinition
+
+  constructor(def: DfaDefinition) {
     super()
+    this.def = def
   }
 
   private getStateLabel(id: string): string {

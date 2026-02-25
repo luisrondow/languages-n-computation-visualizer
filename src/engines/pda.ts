@@ -3,8 +3,11 @@ import type { PdaSnapshot, LogEntry } from '../types/simulation'
 import { SimulationEngine } from './base'
 
 export class PdaEngine extends SimulationEngine<PdaSnapshot> {
-  constructor(private def: PdaDefinition) {
+  private readonly def: PdaDefinition
+
+  constructor(def: PdaDefinition) {
     super()
+    this.def = def
   }
 
   private getStateLabel(id: string): string {
@@ -51,8 +54,9 @@ export class PdaEngine extends SimulationEngine<PdaSnapshot> {
     }
     // Push in reverse order so first element ends up on top
     for (let i = transition.stackPush.length - 1; i >= 0; i--) {
-      if (transition.stackPush[i] !== 'ε') {
-        newStack.push(transition.stackPush[i])
+      const stackSymbol = transition.stackPush[i]
+      if (stackSymbol !== undefined && stackSymbol !== 'ε') {
+        newStack.push(stackSymbol)
       }
     }
 

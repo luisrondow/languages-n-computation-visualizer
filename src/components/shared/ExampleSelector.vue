@@ -20,8 +20,9 @@ const examples = computed(() => getExamples(props.type))
 function loadExample(example: Example<unknown>) {
   store.setDefinition(props.type, example.definition as AutomatonDefinition)
   simStore.resetSimulation(props.type)
-  if (example.testInputs.length > 0) {
-    simStore.setInputString(props.type, example.testInputs[0].input)
+  const firstInput = example.testInputs[0]
+  if (firstInput) {
+    simStore.setInputString(props.type, firstInput.input)
   }
   open.value = false
 }

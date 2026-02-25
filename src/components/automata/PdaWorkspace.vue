@@ -37,12 +37,6 @@ function onPositionUpdate(id: string, x: number, y: number) {
   store.updateStatePosition('pda', id, x, y)
 }
 
-function updateStackAlphabet(alphabet: string[]) {
-  if (def.value.type === 'pda') {
-    def.value.stackAlphabet = alphabet
-  }
-}
-
 function updateAcceptanceMode(mode: string) {
   if (def.value.type === 'pda') {
     def.value.acceptanceMode = mode as 'finalState' | 'emptyStack' | 'both'

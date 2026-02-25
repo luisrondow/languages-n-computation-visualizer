@@ -3,8 +3,11 @@ import type { EnfaSnapshot, LogEntry } from '../types/simulation'
 import { SimulationEngine } from './base'
 
 export class EnfaEngine extends SimulationEngine<EnfaSnapshot> {
-  constructor(private def: EnfaDefinition) {
+  private readonly def: EnfaDefinition
+
+  constructor(def: EnfaDefinition) {
     super()
+    this.def = def
   }
 
   private getStateLabel(id: string): string {

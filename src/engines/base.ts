@@ -24,7 +24,7 @@ export abstract class SimulationEngine<S extends SimulationSnapshot = Simulation
       steps++
     }
 
-    const last = snapshots[snapshots.length - 1]
+    const last = snapshots[snapshots.length - 1] ?? initial
     return { snapshots, log, accepted: this.isAccepted(last) }
   }
 }
