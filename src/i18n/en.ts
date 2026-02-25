@@ -105,7 +105,7 @@ export default {
     },
     pda: {
       title: 'Pushdown Automaton (PDA)',
-      body: 'A PDA extends a finite automaton with a stack. Each transition can read a symbol, pop from the stack, and push symbols onto the stack. PDAs can recognize context-free languages like {aⁿbⁿ}.',
+      body: "A PDA extends a finite automaton with a stack. Each transition can read a symbol, pop from the stack, and push symbols onto the stack. PDAs can recognize context-free languages like {'{'}aⁿbⁿ{'}'}.",
     },
     turing: {
       title: 'Turing Machine (TM)',
@@ -118,7 +118,7 @@ export default {
     dfa: {
       endsWith01: {
         name: 'Ends with "01"',
-        description: 'Accepts binary strings ending with "01". Alphabet: {0, 1}.',
+        description: "Accepts binary strings ending with \"01\". Alphabet: {'{'}0, 1{'}'}.",
       },
       evenZeros: {
         name: 'Even number of 0s',
@@ -166,7 +166,7 @@ export default {
       },
       palindrome: {
         name: 'Palindrome checker',
-        description: 'Accepts palindromes over {a, b} by comparing first and last chars repeatedly.',
+        description: "Accepts palindromes over {'{'}a, b{'}'} by comparing first and last chars repeatedly.",
       },
       unaryAddition: {
         name: 'Unary addition',

@@ -105,7 +105,7 @@ export default {
     },
     pda: {
       title: 'Autômato com Pilha (AP)',
-      body: 'Um AP estende um autômato finito com uma pilha. Cada transição pode ler um símbolo, desempilhar da pilha e empilhar símbolos. APs podem reconhecer linguagens livres de contexto como {aⁿbⁿ}.',
+      body: "Um AP estende um autômato finito com uma pilha. Cada transição pode ler um símbolo, desempilhar da pilha e empilhar símbolos. APs podem reconhecer linguagens livres de contexto como {'{'}aⁿbⁿ{'}'}.",
     },
     turing: {
       title: 'Máquina de Turing (MT)',
@@ -118,7 +118,7 @@ export default {
     dfa: {
       endsWith01: {
         name: 'Termina com "01"',
-        description: 'Aceita strings binárias que terminam com "01". Alfabeto: {0, 1}.',
+        description: "Aceita strings binárias que terminam com \"01\". Alfabeto: {'{'}0, 1{'}'}.",
       },
       evenZeros: {
         name: 'Número par de 0s',
@@ -166,7 +166,7 @@ export default {
       },
       palindrome: {
         name: 'Verificador de palíndromo',
-        description: 'Aceita palíndromos sobre {a, b} comparando o primeiro e último caracteres repetidamente.',
+        description: "Aceita palíndromos sobre {'{'}a, b{'}'} comparando o primeiro e último caracteres repetidamente.",
       },
       unaryAddition: {
         name: 'Adição unária',
