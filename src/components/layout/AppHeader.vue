@@ -24,12 +24,23 @@ function toggleLocale() {
         {{ t('app.subtitle') }}
       </p>
     </div>
-    <button
-      class="px-3 py-1.5 text-sm font-mono rounded-lg bg-surface-elevated border border-border-default
-             hover:border-accent-cyan hover:text-accent-cyan transition-colors cursor-pointer"
-      @click="toggleLocale"
-    >
-      {{ appStore.locale === 'en' ? 'PT' : 'EN' }}
-    </button>
+    <div class="flex items-center gap-2">
+      <a
+        href="https://github.com/luisrondow/languages-n-computation-visualizer"
+        target="_blank"
+        rel="noopener"
+        class="px-3 py-1.5 text-sm font-mono rounded-lg bg-surface-elevated border border-border-default
+               hover:border-accent-cyan hover:text-accent-cyan transition-colors"
+      >
+        GitHub
+      </a>
+      <button
+        class="px-3 py-1.5 text-sm font-mono rounded-lg bg-surface-elevated border border-border-default
+               hover:border-accent-cyan hover:text-accent-cyan transition-colors cursor-pointer"
+        @click="toggleLocale"
+      >
+        {{ appStore.locale === 'en' ? 'PT' : 'EN' }}
+      </button>
+    </div>
   </header>
 </template>
