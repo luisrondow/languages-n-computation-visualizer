@@ -121,7 +121,6 @@ export class PdaEngine extends SimulationEngine<PdaSnapshot> {
     })
 
     if (!hasTransition) return true
-    if (snapshot.remainingInput.length === 0) return true
     return false
   }
 }
